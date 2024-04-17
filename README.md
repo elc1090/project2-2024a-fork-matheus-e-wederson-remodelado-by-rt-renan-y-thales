@@ -16,7 +16,7 @@ Acesso: Substitua este texto pela URL de deploy do projeto
 
 ### Desenvolvedores
 - Matheus Delazeri (Sistemas de Informação)
-- Wederson (Sistemas de Informação)
+- Wederson Fagundes (Sistemas de Informação)
 
 ### Nosso produto
 
@@ -46,6 +46,7 @@ Substitua este trecho por uma lista detalhada dos ambientes/ferramentas de desen
 - VS Code
 - WebStorm
 - Postman
+- ESLint
 
 #### Referências e créditos
 
