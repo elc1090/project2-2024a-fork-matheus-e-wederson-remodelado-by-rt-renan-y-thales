@@ -33,7 +33,7 @@ export async function POST(req: Request) {
       let totalFraudWeights = 0
       const fraudFactor = 1000
 
-      const columnWeights = {
+      const columnWeights: Record<string, number> = {
         amount: 1.0,
         payment_method: 1.5,
         product_category: 1.0,
@@ -43,7 +43,10 @@ export async function POST(req: Request) {
         ip: 5.0,
       }
 
-      const calculateWeights = async (column: string, value: any) => {
+      const calculateWeights = async (
+        column: string,
+        value: string | number,
+      ) => {
         const similarTransactionsCount = await prisma.transaction.count({
           where: {
             [column]: value,
