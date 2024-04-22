@@ -19,16 +19,6 @@ export async function POST(req: Request) {
     const predictFraudProbability = async (
       data: FraudRequestBody,
     ): Promise<number> => {
-      const {
-        amount,
-        payment_method,
-        product_category,
-        quantity,
-        customer_local,
-        device,
-        ip,
-      } = data
-
       let totalWeights = 0
       let totalFraudWeights = 0
       const fraudFactor = 1000
@@ -70,13 +60,13 @@ export async function POST(req: Request) {
         }
       }
 
-      await calculateWeights('amount', amount)
-      await calculateWeights('payment_method', payment_method)
-      await calculateWeights('product_category', product_category)
-      await calculateWeights('quantity', quantity)
-      await calculateWeights('customer_local', customer_local)
-      await calculateWeights('device', device)
-      await calculateWeights('ip', ip)
+      await calculateWeights('amount', data.amount)
+      await calculateWeights('payment_method', data.payment_method)
+      await calculateWeights('product_category', data.product_category)
+      await calculateWeights('quantity', data.quantity)
+      await calculateWeights('customer_local', data.customer_local)
+      await calculateWeights('device', data.device)
+      await calculateWeights('ip', data.ip)
 
       let probabilityOfFraud = 0
       if (totalWeights > 0) {
