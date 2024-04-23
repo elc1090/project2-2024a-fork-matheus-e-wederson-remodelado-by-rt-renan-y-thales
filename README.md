@@ -1,8 +1,10 @@
 # Projeto: API de detecção de transações fraudulentas
 
-![Substitua a imagem ao lado por um screenshot do seu projeto](https://mdswanson.com/static/chops-ux-step-4.png "Screenshot do projeto")
+![image](https://github.com/matheus-delazeri/fraud-detection/assets/55641441/cb46effc-7a01-4e3f-8bf3-8c65df3e8b2b)
 
-Acesso: https://fraud-detection-beta.vercel.app
+
+Acesso: https://fraud-detection-beta.vercel.app/
+
 
 ### Desenvolvedores
 - Matheus Delazeri (Sistemas de Informação)
@@ -14,21 +16,27 @@ Criação de uma API que permite a detecção de transações de e-commerce frau
 
 Através desta API é possível:
 - Enviar informações de uma transação e receber a probabilidade da mesma ser fraudulenta;
-- Listar as transações fraudulentas da base de conhecimento;
-- Classificar uma transação, anteriormente verificada, como fraudulenta ou não (verificação de 2 etapas). 
 
 Além disso, foi desenvolvido um pequeno sistema de e-commerce, para consumir a API.
 
 ### Desenvolvimento
 
-Substitua este texto por uma descrição do processo de desenvolvimento, explicando decisões tomadas e etapas do trabalho.
+Optamos por desenvolver uma API "direta ao ponto", que necessite pouco input para gerar um output confiável. Desta forma, os consumidores da mesma poderão utilizá-la mais facilmente, sem se preocupar com muitas pre-configurações, etc.
 
+O sistema de e-commerce também segue as mesmas diretrizes. Utilizando do modelo "One Page Checkout", onde o cliente não precisa se registrar anteriormente, o cliente pode finalizar as compras de forma mais rápida.
+
+Realizamos o deploy em plataformas gratuitas:
+- Front & API: https://nextjs.org/
+- Banco de dados: https://neon.tech/
+
+Ambas atuam bem com o propósito da aplicação, além de serem de simples configuração.
 
 #### Tecnologias
 
 - HTML, CSS
 - React JS (sistema de e-commerce)
 - Next JS (API)
+- Prisma (ORM)
 
 #### Ambiente de desenvolvimento
 
