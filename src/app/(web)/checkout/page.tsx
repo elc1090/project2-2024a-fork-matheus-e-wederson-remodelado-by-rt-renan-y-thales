@@ -38,7 +38,13 @@ interface FormData {
 export default function Checkout() {
   const router = useRouter()
   const { cart, cartAmount, resetCart } = useCart()
-  const { register, handleSubmit, setValue, watch } = useForm<FormData>()
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { isSubmitting },
+  } = useForm<FormData>()
   const { billingType } = watch()
 
   const [validation, setValidation] = useState<number | null>(null)
@@ -224,9 +230,10 @@ export default function Checkout() {
             {!validation && (
               <button
                 type="submit"
-                className="mt-4 rounded-md bg-emerald-600 px-4 py-2 text-sm outline-none hover:bg-emerald-600/80 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
+                disabled={isSubmitting}
+                className="mt-4 rounded-md bg-emerald-600 px-4 py-2 text-sm outline-none hover:bg-emerald-600/80 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900 disabled:bg-emerald-600/40 disabled:hover:bg-emerald-600/40"
               >
-                Finalizar compra
+                {isSubmitting ? 'Processando...' : 'Finalizar compra'}
               </button>
             )}
 
