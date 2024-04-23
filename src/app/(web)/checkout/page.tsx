@@ -233,7 +233,7 @@ export default function Checkout() {
               </button>
             )}
 
-            {validation && validation < 45 && (
+            {validation && validation < 53 && (
               <div className="mt-4 flex justify-center rounded border border-dashed border-emerald-600 bg-emerald-600/20 px-4 py-2">
                 <span className="text-emerald-400">
                   Essa transação foi verificada e não possuí risco de fraude!
@@ -241,7 +241,7 @@ export default function Checkout() {
               </div>
             )}
 
-            {validation && validation >= 45 && validation < 55 && (
+            {validation && validation >= 53 && validation <= 53.5 && (
               <div className="mt-4 flex justify-center rounded border border-dashed border-yellow-600 bg-yellow-600/20 px-4 py-2">
                 <span className="text-yellow-400">
                   Essa transação possui risco de fraude!
@@ -249,7 +249,7 @@ export default function Checkout() {
               </div>
             )}
 
-            {validation && validation >= 55 && (
+            {validation && validation > 53.5 && (
               <div className="mt-4 flex justify-center rounded border border-dashed border-rose-600 bg-rose-600/20 px-4 py-2">
                 <span className="text-rose-400">
                   Essa transação foi detectada como fraude!
