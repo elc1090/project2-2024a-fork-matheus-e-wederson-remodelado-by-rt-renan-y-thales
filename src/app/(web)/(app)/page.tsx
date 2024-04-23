@@ -1,4 +1,3 @@
-import { CartResume } from '@/components/cart-resume'
 import { ProductCard } from '@/components/product-card'
 
 interface Product {
