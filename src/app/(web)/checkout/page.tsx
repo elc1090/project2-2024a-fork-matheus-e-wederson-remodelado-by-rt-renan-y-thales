@@ -37,7 +37,7 @@ interface FormData {
 
 export default function Checkout() {
   const router = useRouter()
-  const { cart, cartAmount, resetCart } = useCart()
+  const { cart, cartAmount, resetCart, quantityInCart } = useCart()
   const {
     register,
     handleSubmit,
@@ -50,17 +50,13 @@ export default function Checkout() {
   const [validation, setValidation] = useState<number | null>(null)
 
   async function handleFormSubmit({ billingType }: FormData) {
-    const amount = 32.0
-    const quantity = 2
-
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}`, {
       method: 'POST',
       body: JSON.stringify({
-        amount,
+        amount: cartAmount,
         payment_method: billingType,
         product_category: 'electronics',
-        quantity,
-        customer_local: 'Murphyberg',
+        quantity: quantityInCart,
       }),
     })
     const data = await response.json()
