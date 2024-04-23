@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 import { prisma } from '@/lib/prisma'
 
@@ -8,13 +8,13 @@ interface FraudRequestBody {
   product_category: string
   quantity: number
   customer_local: string
-  device: string
-  ip: string
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     const body: FraudRequestBody = await req.json()
+    const remoteIp = req.headers.get('x-forwarded-for') ?? ''
+    const device = req.headers.get('user-agent') ?? ''
 
     const predictFraudProbability = async (
       data: FraudRequestBody,
@@ -65,8 +65,8 @@ export async function POST(req: Request) {
       await calculateWeights('product_category', data.product_category)
       await calculateWeights('quantity', data.quantity)
       await calculateWeights('customer_local', data.customer_local)
-      await calculateWeights('device', data.device)
-      await calculateWeights('ip', data.ip)
+      await calculateWeights('device', device)
+      await calculateWeights('ip', remoteIp)
 
       let probabilityOfFraud = 0
       if (totalWeights > 0) {
