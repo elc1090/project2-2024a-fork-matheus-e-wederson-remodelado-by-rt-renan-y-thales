@@ -16,7 +16,6 @@ export function BillingTypeButton({
   isSelected = false,
   ...props
 }: BillingTypeButtonProps) {
-  console.log(isSelected)
   return (
     <button
       type="button"
