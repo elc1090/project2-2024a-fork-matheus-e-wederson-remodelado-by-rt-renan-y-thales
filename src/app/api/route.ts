@@ -7,14 +7,31 @@ interface FraudRequestBody {
   payment_method: string
   product_category: string
   quantity: number
-  customer_local: string
+  ip?: string
+  device?: string
+  customer_local?: string
 }
 
 export async function POST(req: NextRequest) {
   try {
     const body: FraudRequestBody = await req.json()
-    const remoteIp = req.headers.get('x-forwarded-for') ?? ''
-    const device = req.headers.get('user-agent') ?? ''
+    const remoteIp =
+      body.ip ?? req.headers.get('x-forwarded-for') ?? '110.87.246.85'
+    const device = body.device ?? 'desktop'
+
+    let city
+    if (body.customer_local) {
+      city = body.customer_local
+    } else {
+      try {
+        const response = await fetch(`https://ipinfo.io/${remoteIp}/json`)
+        const geoData = await response.json()
+
+        city = geoData.city
+      } catch {
+        city = 'Kingstad'
+      }
+    }
 
     const predictFraudProbability = async (
       data: FraudRequestBody,
@@ -64,7 +81,7 @@ export async function POST(req: NextRequest) {
       await calculateWeights('payment_method', data.payment_method)
       await calculateWeights('product_category', data.product_category)
       await calculateWeights('quantity', data.quantity)
-      await calculateWeights('customer_local', data.customer_local)
+      await calculateWeights('customer_local', city)
       await calculateWeights('device', device)
       await calculateWeights('ip', remoteIp)
 
