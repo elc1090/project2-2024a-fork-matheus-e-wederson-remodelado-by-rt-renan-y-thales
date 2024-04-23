@@ -3,6 +3,7 @@ import fs from 'fs'
 
 const prisma = new PrismaClient()
 const transactionsFilePath = process.cwd() + '/prisma/data/transactions.json'
+const productsFilePath = process.cwd() + '/prisma/data/products.json'
 
 async function seedDatabase() {
   try {
@@ -11,6 +12,13 @@ async function seedDatabase() {
 
     await prisma.transaction.createMany({
       data: transactions,
+    })
+
+    const products = fs.readFileSync(productsFilePath, 'utf-8')
+    const productData = JSON.parse(products)
+
+    await prisma.product.createMany({
+      data: productData,
     })
 
     console.log('Transactions added successfully')

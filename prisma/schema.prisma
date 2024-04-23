@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Transaction {
-  id               String  @id @default(uuid())
+  id               String @id @default(uuid())
   amount           Float
   payment_method   String
   product_category String
@@ -23,4 +23,13 @@ model Transaction {
   hour             Int
 
   @@map("transaction")
+}
+
+model Product {
+  id    String @id @default(uuid())
+  image String
+  name  String
+  price Float
+
+  @@map("products")
 }
