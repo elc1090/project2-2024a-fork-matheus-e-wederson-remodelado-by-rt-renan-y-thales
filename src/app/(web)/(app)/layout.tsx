@@ -6,8 +6,8 @@ export default function AppLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="flex w-full flex-col items-center">
-      <div>{children}</div>
+    <div className="flex w-full flex-1 flex-col items-center">
+      <div className="w-full max-w-screen-lg flex-1">{children}</div>
       <CartResume />
     </div>
   )
