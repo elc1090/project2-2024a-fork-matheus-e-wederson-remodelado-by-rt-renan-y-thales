@@ -10,6 +10,10 @@ Acesso: https://fraud-detection-beta.vercel.app/
 - Matheus Delazeri (Sistemas de Informação)
 - Wederson Fagundes (Sistemas de Informação)
 
+## Refatoradores
+- Thales Lagermann
+- Renan Bick
+  
 ### Nosso produto
 
 Criação de uma API que permite a detecção de transações de e-commerce fraudulentas, utilizando a base de conhecimento: https://www.kaggle.com/datasets/shriyashjagtap/fraudulent-e-commerce-transactions/data
