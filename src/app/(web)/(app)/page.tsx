@@ -7,6 +7,24 @@ interface Product {
   price: number
 }
 
+async function getProductsFake(): Promise<Product[]>{
+  const response = await fetch(
+    `https://fakestoreapi.com/products`,
+    {
+      next: {
+        revalidate: 60 * 60 * 24, // 1 day
+      },
+    },
+  )
+  const data = await response.json()
+
+  if (data.error) {
+    return []
+  }
+
+  return data.products
+}
+
 async function fetchProducts(): Promise<Product[]> {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/products`,
@@ -27,6 +45,7 @@ async function fetchProducts(): Promise<Product[]> {
 
 export default async function Home() {
   const products = await fetchProducts()
+  const fakeProducts = await getProductsFake()
 
   return (
     <div className="flex w-full flex-1 flex-col gap-5 px-4 py-10">
@@ -35,6 +54,9 @@ export default async function Home() {
       <div className="grid w-full gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
+        ))}
+        {products.map((fakeProducts) => (
+          <ProductCard key={fakeProducts.id} product={fakeProducts} />
         ))}
       </div>
     </div>
