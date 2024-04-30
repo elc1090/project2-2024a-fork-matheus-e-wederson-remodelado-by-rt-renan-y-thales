@@ -5,7 +5,7 @@ import { ComponentProps } from 'react'
 import { useCart } from '@/context/cart-context'
 interface Product {
   id: string
-  name: string
+  title: string
   price: number
   quantity: number
 }
@@ -36,7 +36,7 @@ export function CartTableRow({ product, ...props }: CartTableRowProps) {
       {...props}
     >
       <td className="col-span-3 flex">
-        <span>{product.name}</span>
+        <span>{product.title}</span>
       </td>
       <td className="col-span-2 flex justify-center">
         {product.price.toLocaleString('pt-BR', {

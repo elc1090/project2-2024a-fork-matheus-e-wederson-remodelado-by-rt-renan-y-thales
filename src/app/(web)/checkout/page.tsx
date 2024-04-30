@@ -190,9 +190,15 @@ export default function Checkout() {
 
         <aside>
           <table className="flex flex-col rounded bg-zinc-800 p-4">
-            <h2 className="text-lg font-semibold text-zinc-200">
-              Produtos no carrinho
-            </h2>
+            <thead>
+              <tr>
+                <th>
+                  <h2 className="text-lg font-semibold text-zinc-200">
+                    Produtos no carrinho
+                  </h2>
+                </th>
+              </tr>
+            </thead>
 
             <thead className="mt-2 rounded-t bg-zinc-300/10 p-2 text-xs font-semibold">
               <tr className="grid grid-cols-8">
@@ -224,13 +230,19 @@ export default function Checkout() {
             </tfoot>
 
             {!validation && (
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="mt-4 rounded-md bg-emerald-600 px-4 py-2 text-sm outline-none hover:bg-emerald-600/80 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900 disabled:bg-emerald-600/40 disabled:hover:bg-emerald-600/40"
-              >
-                {isSubmitting ? 'Processando...' : 'Finalizar compra'}
-              </button>
+              <tfoot>
+                <tr>
+                  <th>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="mt-4 rounded-md bg-emerald-600 px-4 py-2 text-sm outline-none hover:bg-emerald-600/80 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900 disabled:bg-emerald-600/40 disabled:hover:bg-emerald-600/40"
+                    >
+                      {isSubmitting ? 'Processando...' : 'Verificar Fraude'}
+                    </button>
+                  </th>
+                </tr>
+              </tfoot>
             )}
 
             {validation && validation < 53 && (

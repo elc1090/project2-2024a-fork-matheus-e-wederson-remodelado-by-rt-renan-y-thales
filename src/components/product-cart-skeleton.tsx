@@ -7,7 +7,6 @@ export function ProductCartSkeleton() {
         <div className="h-5 w-40 animate-pulse bg-zinc-600" />
         <div className="h-4 w-20 animate-pulse bg-zinc-600" />
       </div>
-
       <div className="h-7 animate-pulse rounded bg-zinc-600" />
     </div>
   )

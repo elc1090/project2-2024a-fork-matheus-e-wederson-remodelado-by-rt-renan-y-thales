@@ -5,7 +5,7 @@ import { useCart } from '@/context/cart-context'
 
 interface Product {
   id: string
-  name: string
+  title: string
   image: string
   price: number
 }
@@ -33,7 +33,7 @@ export function ProductCard({ product }: ProductCardProps) {
       />
 
       <div className="flex flex-col">
-        <span className="font-medium">{product.name}</span>
+        <span className="font-medium">{product.title}</span>
         <span className="text-sm text-zinc-400">
           {product.price.toLocaleString('pt-BR', {
             style: 'currency',

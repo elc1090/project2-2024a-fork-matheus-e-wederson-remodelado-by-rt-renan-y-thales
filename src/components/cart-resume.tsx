@@ -15,7 +15,7 @@ export function CartResume() {
   return (
     <>
       {!!quantityInCart && (
-        <div className="flex w-full items-center justify-end gap-4 bg-zinc-600 px-4 py-4">
+        <div className="flex w-full items-center justify-end gap-4 bg-zinc-600 px-4 py-4 fixed bottom-0">
           <div className="flex items-center gap-1.5">
             <span className="text-muted-foreground text-sm">
               {quantityInCart} produto
@@ -37,7 +37,7 @@ export function CartResume() {
             onClick={handleGoToCheckout}
             className="rounded bg-emerald-500 px-2 py-2 text-sm hover:bg-emerald-500/80"
           >
-            Finalizar compra
+            Ir para Pagamento
           </button>
         </div>
       )}
