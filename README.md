@@ -1,6 +1,6 @@
 # Projeto: API de detecção de transações fraudulentas
 
-![image](https://github.com/matheus-delazeri/fraud-detection/assets/55641441/cb46effc-7a01-4e3f-8bf3-8c65df3e8b2b)
+![image](https://img001.prntscr.com/file/img001/AEv5u50hRzerpAgxLGFZ3g.png)
 
 
 Acesso: https://fraud-detection-beta.vercel.app/

@@ -1,8 +1,11 @@
 {
   "name": "project2-2024a-matheus-e-wederson",
   "version": "0.1.0",
+  "homepage": "https://elc1090.github.io/project2-2024a-fork-matheus-e-wederson-remodelado-by-rt-renan-y-thales/",
   "private": true,
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
@@ -33,6 +36,7 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.1",
     "eslint-plugin-simple-import-sort": "^12.1.0",
+    "gh-pages": "^6.1.1",
     "postcss": "^8",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "prisma": "^5.12.1",
